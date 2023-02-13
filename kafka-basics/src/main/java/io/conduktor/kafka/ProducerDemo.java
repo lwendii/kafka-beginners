@@ -28,8 +28,13 @@ public class ProducerDemo {
         // create a producer record
         ProducerRecord<String, String> producerRecord = new ProducerRecord<>("demo_java", "hello world");
 
-        // send data
+        // send data -- asynchronously
+        producer.send(producerRecord);
+
+        // tell the producer to send all data and block until done -- synchronous
+        producer.flush();
 
         // flush and close the producer
+        producer.close();
     }
 }
